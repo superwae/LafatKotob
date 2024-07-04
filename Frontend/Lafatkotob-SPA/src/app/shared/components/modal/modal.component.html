@@ -1,0 +1,217 @@
+<div *ngIf="show" class="modal-overlay">
+  <div *ngIf="!showGenreSelection; else genreSelection" class="modal">
+    <div class="modal">
+      <form [formGroup]="bookForm" (ngSubmit)="register()">
+        <div class="modal-top-row">
+          <div class="modal-content-right">
+            <div class="modal-header">
+              <h2>Place order</h2>
+              <button class="close-button" (click)="close()">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="order-type">
+                <div class="label-row">
+                  <pre>
+Type                                                                             Condition</pre>
+                </div>
+                <div class="radio-row">
+                  <div class="middle">
+                    <!-- Radio group for Type -->
+                    <label>
+                      <input type="radio" formControlName="Type" value="sell" (change)="onTypeChange($event)" />
+                      <div *ngIf="
+                          bookForm.get('Type')!.touched &&
+                          bookForm.get('Type')!.errors
+                        ">
+                        <small class="error-message" *ngIf="bookForm.get('Type')!.errors!['required']">
+                          *
+                        </small>
+                      </div>
+                      <div class="front-end box">
+                        <span>Selling</span>
+                      </div>
+                    </label>
+                    <label>
+                      <input type="radio" formControlName="Type" value="buy" (change)="onTypeChange($event)" />
+                      <div class="back-end box">
+                        <span>Buying</span>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="middle">
+                    <!-- Radio group for Condition, with the "All" option conditionally shown -->
+                    <label>
+                      <input type="radio" formControlName="Condition" value="Great" />
+                      <div *ngIf="
+                          bookForm.get('Condition')!.touched &&
+                          bookForm.get('Condition')!.errors
+                        ">
+                        <small class="error-message" *ngIf="bookForm.get('Condition')!.errors!['required']">
+                          *
+                        </small>
+                      </div>
+
+                      <div class="front-end box">
+                        <span>Great</span>
+                      </div>
+                    </label>
+                    <label>
+                      <input type="radio" formControlName="Condition" value="Good" />
+                      <div class="back-end box">
+                        <span>Good</span>
+                      </div>
+                    </label>
+                    <label>
+                      <input type="radio" formControlName="Condition" value="Bad" />
+                      <div class="back-end box">
+                        <span>Bad</span>
+                      </div>
+                    </label>
+                    <!-- The "All" option is conditionally shown based on the type selection -->
+                    <label *ngIf="isLookingFor">
+                      <input type="radio" formControlName="Condition" value="Any" />
+                      <div class="back-end box">
+                        <span>Any</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group input-third">
+                <label for="bookTitle">Title</label>
+                <input type="text" formControlName="Title" placeholder="Enter book title" />
+                <div *ngIf="
+                    bookForm.get('Title')!.touched &&
+                    bookForm.get('Title')!.errors
+                  ">
+                  <small class="error-message" *ngIf="bookForm.get('Title')!.errors!['required']">
+                    *
+                  </small>
+                </div>
+              </div>
+              <div class="input-group input-third">
+                <label for="bookAuthor">Author</label>
+                <input type="text" formControlName="Author" placeholder="Enter author's name" />
+                <div *ngIf="
+                    bookForm.get('Author')!.touched &&
+                    bookForm.get('Author')!.errors
+                  ">
+                  <small class="error-message" *ngIf="bookForm.get('Author')!.errors!['required']">
+                    *
+                  </small>
+                </div>
+              </div>
+
+              <div class="input-group input-third">
+                <label for="bookTitle">Language</label>
+                <select formControlName="Language" class="genre-filter-select">
+                  <option value="English">English</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="Chinese">Chinese (Mandarin)</option>
+                  <option value="Hindi">Hindi</option>
+                  <option value="Arabic">Arabic</option>
+                  <option value="Portuguese">Portuguese</option>
+                  <option value="Bengali">Bengali</option>
+                  <option value="Russian">Russian</option>
+                  <option value="Japanese">Japanese</option>
+                  <option value="Punjabi">Punjabi</option>
+                  <option value="German">German</option>
+                  <option value="Javanese">Javanese</option>
+                  <option value="Korean">Korean</option>
+                  <option value="French">French</option>
+                  <option value="Turkish">Turkish</option>
+                  <option value="Vietnamese">Vietnamese</option>
+                  <option value="Telugu">Telugu</option>
+                  <option value="Italian">Italian</option>
+                  <option value="Thai">Thai</option>
+                  <option value="Dutch">Dutch</option>
+                  <option value="Greek">Greek</option>
+                  <option value="Swedish">Swedish</option>
+                  <option value="Czech">Czech</option>
+                  <option value="Finnish">Finnish</option>
+                  <option value="Danish">Danish</option>
+                  <option value="Polish">Polish</option>
+                  <option value="Hungarian">Hungarian</option>
+                  <option value="Hebrew">Hebrew</option>
+                  <option value="Norwegian">Norwegian</option>
+                </select>
+                <div *ngIf="
+                    bookForm.get('Language')!.touched &&
+                    bookForm.get('Language')!.errors
+                  ">
+                  <small class="error-message" *ngIf="bookForm.get('Language')!.errors!['required']">
+                    *
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="bookDescription">Description</label>
+              <textarea formControlName="Description" rows="4" placeholder="Enter book description"></textarea>
+              <div *ngIf="
+                  bookForm.get('Description')!.touched &&
+                  bookForm.get('Description')!.errors
+                ">
+                <small class="error-message" *ngIf="bookForm.get('Description')!.errors!['required']">
+                  *
+                </small>
+              </div>
+            </div>
+            <div class="bottom-row">
+              <div class="isbn-page-count">
+                <label for="bookIsbn">ISBN</label><span
+                  appTooltip="International Standard Book Number, it must be 10 digits ">
+                  *
+                </span>
+                <input type="text" formControlName="ISBN" placeholder="Enter book ISBN" />
+                <div *ngIf="
+                    bookForm.get('ISBN')!.touched &&
+                    bookForm.get('ISBN')!.errors
+                  ">
+                  <small class="error-message" *ngIf="bookForm.get('ISBN')!.errors!['required']">
+                    *
+                  </small>
+                  <small class="error-message" *ngIf="bookForm.get('ISBN')!.errors!['pattern']">
+                    ISBN must be 10 digits.
+                  </small>
+                </div>
+              </div>
+              <div class="isbn-page-count">
+                <label for="bookPageCount">Page Count</label>
+                <input type="number" formControlName="PageCount" placeholder="Enter number of pages" />
+                <div *ngIf="
+                    bookForm.get('PageCount')!.touched &&
+                    bookForm.get('PageCount')!.errors
+                  ">
+                  <small class="error-message" *ngIf="bookForm.get('PageCount')!.errors!['required']">
+                    *
+                  </small>
+                </div>
+              </div>
+              <div class="isbn-page-count">
+                <label for="bookPublicationDate">Publication Date</label>
+                <input type="date" formControlName="PublicationDate" placeholder="Select publication date" />
+                <div *ngIf="
+                    bookForm.get('PublicationDate')!.touched &&
+                    bookForm.get('PublicationDate')!.errors
+                  ">
+                  <small class="error-message" *ngIf="bookForm.get('PublicationDate')!.errors!['required']">
+                    *
+                  </small>
+                </div>
+              </div>
+              <button class="post-button" type="submit">Continue</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <ng-template #genreSelection>
+    <app-modal-genre [registrationData]="registrationData" (closeEvent2)="onClosePopup()"
+      (addAnotherBookEvent)="onAddAnotherBook()"></app-modal-genre>
+  </ng-template>
+</div>

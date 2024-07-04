@@ -1,0 +1,268 @@
+<div class="app-container">
+  <router-outlet></router-outlet>
+  <div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true" />
+
+    <div class="signup">
+      <form [formGroup]="registerForm" (ngSubmit)="Register()">
+        <label for="chk" aria-hidden="true" (click)="toggleForm()"
+          >Sign up</label
+        >
+        <div
+          *ngIf="currentfileds == 'signup'"
+          [@fade]="currentfileds == 'signup'"
+        >
+          <!-- UserName -->
+          <div>
+            <input
+              type="text"
+              formControlName="UserName"
+              placeholder="UserName"
+              required
+              [attr.tabindex]="currentfileds == 'signup' ? '1' : '-1'"
+            />
+            <div
+              class="error-container"
+              *ngIf="
+                registerForm.get('UserName')?.touched &&
+                registerForm.get('UserName')?.errors
+              "
+            >
+              <small
+                class="error-message"
+                *ngIf="registerForm.get('UserName')?.errors?.['required']"
+                >User name is required.</small
+              >
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <input
+              type="email"
+              formControlName="Email"
+              placeholder="Email"
+              required
+              [attr.tabindex]="currentfileds == 'signup' ? '2' : '-1'"
+            />
+            <div
+              class="error-container"
+              *ngIf="
+                registerForm.get('Email')?.touched &&
+                registerForm.get('Email')?.errors
+              "
+            >
+              <small
+                class="error-message"
+                *ngIf="registerForm.get('Email')?.errors?.['required']"
+                >Email is required.</small
+              >
+              <small
+                class="error-message"
+                *ngIf="
+                  registerForm.get('Email')?.touched &&
+                  registerForm.get('Email')?.errors?.['pattern']
+                "
+              >
+                Please enter a valid email format.
+              </small>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div>
+            <input
+              type="password"
+              formControlName="Password"
+              placeholder="Password"
+              required
+              [attr.tabindex]="currentfileds == 'signup' ? '3' : '-1'"
+            />
+            <div
+              class="error-container"
+              *ngIf="
+                registerForm.get('Password')?.touched &&
+                registerForm.get('Password')?.errors
+              "
+            >
+              <small
+                class="error-message"
+                *ngIf="registerForm.get('Password')?.errors?.['required']"
+                >Password is required.</small
+              >
+              <small
+                class="error-message"
+                *ngIf="registerForm.get('Password')?.errors?.['pattern']"
+                >Password must be at least 8 characters and contain at least one
+                letter symbol and one number.</small
+              >
+            </div>
+          </div>
+
+          <!-- ConfirmNewPassword -->
+          <div>
+            <input
+              type="password"
+              formControlName="ConfirmNewPassword"
+              placeholder="Confirm Password"
+              required
+              [attr.tabindex]="currentfileds == 'signup' ? '4' : '-1'"
+            />
+            <div
+              class="error-container"
+              *ngIf="
+                registerForm.errors?.['notSame'] &&
+                (registerForm.get('ConfirmNewPassword')?.touched ||
+                  registerForm.get('ConfirmNewPassword')?.dirty)
+              "
+            >
+              <small class="error-message">Passwords do not match.</small>
+            </div>
+          </div>
+
+          <!-- DthDate -->
+          <div>
+            <input
+              type="date"
+              formControlName="DTHDate"
+              required
+              [attr.tabindex]="currentfileds == 'signup' ? '5' : '-1'"
+            />
+            <div
+              class="error-container"
+              *ngIf="
+                registerForm.get('DTHDate')?.touched &&
+                registerForm.get('DTHDate')?.errors
+              "
+            >
+              <small
+                class="error-message"
+                *ngIf="registerForm.get('DTHDate')?.errors?.['required']"
+                >Date of birth is required.</small
+              >
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="input">
+              <select
+                id="selectedCity"
+                class="form-control"
+                formControlName="City"
+                required
+                [attr.tabindex]="currentfileds == 'signup' ? '6' : '-1'"
+              >
+                <option value="">Select a city</option>
+                <option *ngFor="let city of cities" [value]="city">
+                  {{ city }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            class="error-container"
+            *ngIf="
+              registerForm.get('City')?.touched &&
+              registerForm.get('City')?.errors
+            "
+          >
+            <small
+              class="error-message"
+              *ngIf="registerForm.get('City')?.errors?.['required']"
+              >City is required.</small
+            >
+          </div>
+
+          <button
+            type="submit"
+            [attr.tabindex]="currentfileds == 'signup' ? '7' : '-1'"
+          >
+            Sign up
+          </button>
+          <!-- Contact Us Link -->
+        </div>
+      </form>
+    </div>
+
+    <div class="login">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <label for="chk" aria-hidden="true" (click)="toggleForm()">Login</label>
+        <div
+          *ngIf="currentfileds == 'login'"
+          [@fade]="currentfileds == 'login'"
+        >
+          <input
+            type="text"
+            formControlName="UserName"
+            placeholder="UserName"
+            required
+            [attr.tabindex]="currentfileds == 'login' ? '1' : '-1'"
+          />
+          <div
+            class="error-container"
+            *ngIf="
+              loginForm.get('UserName')?.touched &&
+              loginForm.get('UserName')?.errors
+            "
+          >
+            <small
+              class="error-message"
+              *ngIf="loginForm.get('UserName')?.errors?.['required']"
+              >User name is required.</small
+            >
+          </div>
+
+          <div>
+            <input
+              type="password"
+              formControlName="Password"
+              placeholder="Password"
+              required
+              [attr.tabindex]="currentfileds == 'login' ? '2' : '-1'"
+            />
+            <div
+              class="error-container"
+              *ngIf="
+                loginForm.get('Password')?.touched &&
+                loginForm.get('Password')?.errors
+              "
+            >
+              <small
+                class="error-message"
+                *ngIf="loginForm.get('Password')?.errors?.['required']"
+                >Password is required.</small
+              >
+            </div>
+          </div>
+          <div *ngIf="loginErrorMessage" class="error-message">
+            <small>{{ loginErrorMessage }}</small>
+          </div>
+          <a
+            class="forgot-password-link"
+            routerLink="/forgot-password"
+            [attr.tabindex]="currentfileds == 'login' ? '4' : '-1'"
+            >Forgot Password?</a
+          >
+          <button
+            type="submit"
+            [attr.tabindex]="currentfileds == 'login' ? '3' : '-1'"
+            [disabled]="isLoading"
+          >
+            Login
+            <fa-icon
+              *ngIf="isLoading"
+              [icon]="['fas', 'spinner']"
+              [spin]="true"
+            ></fa-icon>
+          </button>
+          <a
+            class="contact-us-link"
+            routerLink="/contact-us"
+            [attr.tabindex]="currentfileds == 'login' ? '8' : '-1'"
+            >Contact Us</a
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

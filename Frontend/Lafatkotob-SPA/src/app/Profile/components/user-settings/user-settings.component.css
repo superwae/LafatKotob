@@ -1,0 +1,94 @@
+/* Container for overall layout styling */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Styling form elements */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.error-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+button {
+  padding: 10px 20px;
+  color: white;
+  background-color: #9c85f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #9c85f0;
+}
+
+/* Differentiating secondary button */
+.secondary-button {
+  background-color: #6c757d; /* Grey for less prominence */
+}
+
+.secondary-button:hover {
+  background-color: #5a6268;
+}
+
+/* Disabled button styling */
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Message and alert styling for feedback */
+p {
+  color: #28a745;
+  margin-top: 20px;
+}
+
+.alert {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  margin-top: 20px;
+  border-radius: 4px;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+    margin: 10px;
+  }
+  .form-control,
+  button {
+    padding: 12px;
+  }
+}

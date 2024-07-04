@@ -1,0 +1,170 @@
+/* General Page Styling */
+.page-event {
+  padding-top: 5vh;
+  padding-bottom: 20px;
+  font-family: "Varela Round", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* User Profile Image Styling */
+.user-profile-image {
+  width: 40px; /* Adjust size as needed */
+  height: 40px;
+  border-radius: 50%; /* Circular image */
+  margin-right: 10px; /* Space between image and username */
+}
+
+/* User Info Styling */
+.book-user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #000; /* Space between user info and book image */
+}
+
+/* Event Block Styling */
+.event-block {
+  position: relative;
+  margin-bottom: 20px;
+  display: flex;
+  background-color: #fff;
+  padding: 20px; /* Increased padding for better spacing */
+  border: 1px solid #dbdbdb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 90%; /* Adjusted width for better responsiveness */
+  max-width: 600px; /* Max width for larger screens */
+  height: auto; /* Automatic height */
+  align-items: stretch;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-block:active {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Event Info and Image Styling */
+.event-info,
+.event-image {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-info {
+  padding: 20px;
+  text-align: left;
+  gap: 10px;
+  font-size: 18px;
+}
+
+/* Event Date and Time Styling */
+.month,
+.day,
+.date,
+.time {
+  margin-bottom: 8px;
+}
+
+.month {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.venue,
+.date,
+.time {
+  font-size: 18px;
+}
+
+/* Event Image Styling */
+.event-image {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.event__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 576px) {
+  .event-block {
+    flex-direction: column;
+    width: 90vw;
+    height: auto;
+  }
+}
+
+@media (max-width: 360px) {
+  .event-info .month,
+  .event-info .day,
+  .event-info .title {
+    font-size: 16px;
+  }
+}
+
+/* Event Stripe Styling */
+.event-stripe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background-color: #007bff; /* Change to your brand color */
+}
+
+/* Event Info Background */
+.event-info {
+  background-color: #ffffff; /* Ensures text readability */
+}
+
+/* Attend Button Styling */
+.button-attend {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.button-attend:hover {
+  background-color: #218838;
+}
+
+/* Event Title Bar Styling */
+.event-title-bar {
+  padding: 12px 20px;
+  font-size: 24px;
+  text-align: left;
+  font-weight: bold;
+  background-color: #f8f9fa; /* Light background for contrast */
+  border-bottom: 1px solid #dbdbdb; /* Separator line */
+  width: 100%;
+  box-sizing: border-box;
+}

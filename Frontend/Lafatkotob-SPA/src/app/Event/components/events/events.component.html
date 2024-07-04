@@ -1,0 +1,135 @@
+<div class="page-events">
+  <div class="events-header">
+    <div *ngIf="!isMine && isOther">
+
+    </div>
+    <div *ngIf="IfPre && !HideEvents" class="button-container">
+      <button class="custom-button" (click)="GetMine()">My Events</button>
+      <button class="custom-button" (click)="GetOther()">
+        Registered Events
+      </button>
+    </div>
+
+    <div class="container">
+      <div *ngIf="isMine && !HideEvents" class="button-container">
+        <h1>My Events</h1>
+      </div>
+      <div *ngIf="isOther && !HideEvents" class="button-container">
+        <h1 *ngIf="!events || events.length === 0">
+          Events Registered
+        </h1>
+      </div>
+
+      <div class="box">
+        <button (click)="openForm()" *ngIf="IfPre && !HideEvents && isMine"
+          class="button button--round-l button--text-thick button--border-medium button--text-upper button--size-s button--inverted"
+          data-text="Add Event">
+          <span>Open</span>
+        </button>
+      </div>
+
+      <div class="upcoming-event-list" *ngIf="!HideEvents">
+        <div *ngIf="events$ | async as events">
+          <ng-container *ngIf="events && events.length > 0; else noEventsTemplate">
+            <app-event *ngFor="let event of events" [event]="event"></app-event>
+          </ng-container>
+          <ng-template #noEventsTemplate>
+            <div class="no-events">No upcoming events found.</div>
+          </ng-template>
+        </div>
+      </div>
+
+      <div *ngIf="HideEvents" class="container-add-event">
+        <form [formGroup]="form" (ngSubmit)="AddEvent()" class="form">
+          <div class="form-title">
+            <h1>Add New Event</h1>
+          </div>
+
+          <div class="form-group">
+            <label for="EventName">Event Name:</label>
+            <input type="text" id="EventName" formControlName="EventName" placeholder="Enter event name" />
+            <div *ngIf="
+                form.get('EventName')!.touched && form.get('EventName')!.errors
+              " class="error-message">
+              <span *ngIf="form.get('EventName')!.errors!['required']">Event name is required.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="Description">Description:</label>
+            <textarea id="Description" formControlName="Description" placeholder="Describe the event"></textarea>
+            <div *ngIf="
+                form.get('Description')!.touched &&
+                form.get('Description')!.errors
+              " class="error-message">
+              <span *ngIf="form.get('Description')!.errors!['required']">Description is required.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="DateScheduled">Date Scheduled:</label>
+            <input type="datetime-local" id="DateScheduled" formControlName="DateScheduled" />
+            <div *ngIf="
+                form.get('DateScheduled')!.touched &&
+                form.get('DateScheduled')!.errors
+              " class="error-message">
+              <span *ngIf="form.get('DateScheduled')!.errors!['required']">Date and time are required.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="Location">City:</label>
+            <select id="Location" formControlName="Location">
+              <option value="">Select a city</option>
+              <option *ngFor="
+                  let city of [
+                    'Ramallah',
+                    'Jerusalem',
+                    'Gaza',
+                    'Nablus',
+                    'Hebron',
+                    'Jenin',
+                    'Tulkarm',
+                    'Qalqilya',
+                    'Bethlehem',
+                    'Jericho',
+                    'Tubas',
+                    'Salfit'
+                  ]
+                " [value]="city">
+                {{ city }}
+              </option>
+            </select>
+            <div *ngIf="
+                form.get('Location')!.touched && form.get('Location')!.errors
+              " class="error-message">
+              <span *ngIf="form.get('Location')!.errors!['required']">Location is required.</span>
+            </div>
+            <div>
+              <label for="subLocation">Location:</label>
+              <input type="text" id="subLocation" formControlName="subLocation" placeholder="Enter sublocation " />
+            </div>
+          </div>
+
+          <div class="modal-image-holder">
+            <div class="image-container" onclick="document.getElementById('file-input').click()">
+              <img [src]="selectedImageUrl" alt="Selected Book Image" class="image-preview" />
+              <button *ngIf="selectedImageUrl" class="remove-image-button" (click)="removeSelectedImage($event)">
+                &times;
+              </button>
+            </div>
+            <input style="display: none" id="file-input" type="file" (change)="onFileSelected($event)" accept="image/*"
+              hidden />
+          </div>
+
+          <div class="button-container">
+            <button type="submit" class="delete-button">Add Event</button>
+            <button type="reset" class="delete-button" (click)="CloseForm()">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="recommendation-wrapper">
+  <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+    <ng-container *ngFor="let book of books">
+      <div (click)="handleImageClick($event, book)" class="image-link">
+        <img
+          [src]="book.coverImage ? book.coverImage : defaultImageUrl"
+          class="image"
+          (error)="onImageError($event)"
+          (load)="onImageLoad($event)"
+          draggable="false"
+          alt="Book Cover"
+        />
+      </div>
+    </ng-container>
+  </div>
+</div>

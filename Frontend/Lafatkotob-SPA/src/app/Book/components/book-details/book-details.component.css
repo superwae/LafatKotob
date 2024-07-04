@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
+.container {
+  max-width: 40vw;
+  margin: 80px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 12vh;
+}
+
+/* Styling form elements */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.card-wrapper {
+  padding-top: 6%;
+  max-width: 70vw;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+
+  overflow: hidden;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+  .card {
+    flex-direction: row;
+  }
+}
+
+.product-imgs,
+.product-content {
+  flex: 1;
+}
+
+.img-display,
+.img-showcase img {
+  width: 90%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  margin-left: 20px;
+}
+
+.product-content {
+  padding: 2rem 1rem;
+}
+
+.product-title {
+  font-size: 2rem;
+  color: #12263a;
+  margin-bottom: 1rem;
+}
+
+.product-author {
+  font-size: 1.4rem;
+  color: #12263a;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.product-Poster {
+  font-size: 1rem;
+  color: #12263a;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.product-author {
+  margin-top: 1rem;
+}
+
+.product-detail h2,
+h3 {
+  color: #12263a;
+  padding-bottom: 0.6rem;
+}
+
+.product-detail p,
+ul li {
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  opacity: 0.8;
+}
+
+ul {
+  margin: 1rem 0;
+}
+
+ul li {
+  list-style: none;
+  padding-left: 1.7rem;
+  margin: 0.4rem 0;
+  background-size: 18px;
+  font-weight: 600;
+}
+
+ul li span {
+  font-weight: 400;
+}
+
+.book-card-action-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding-top: 25px;
+  margin-left: 20px;
+  font-size: 3.5vh;
+  color: #666;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.book-card-action-button:hover {
+  color: #c8c8c8;
+  transform: scale(1.4);
+}
+.product-Poster a {
+  color: #000;
+  text-decoration: none;
+  transition:
+    color 0.3s ease,
+    transform 0.1s ease;
+}
+
+.product-Poster a:hover {
+  color: #555;
+  text-decoration: underline;
+}
+
+.product-Poster a:active {
+  transform: scale(0.98);
+}
+.book-card-action-button.liked,
+.book-card-action-button.liked:hover {
+  color: #9c85f0;
+}
+.product-detail p,
+.p {
+  max-width: 300px;
+  max-height: 200px;
+  display: block;
+  padding: 10px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+ul li {
+  list-style-type: circle;
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  opacity: 0.8;
+  text-align: justify;
+}
+.close-button {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  direction: rtl;
+}
+.book-card-action-button .text,
+.book-card-action-button .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.book-card-action-button .text {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.book-card-action-button .icon {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.book-card-action-button:hover .text {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.book-card-action-button:hover .icon {
+  transform: translateY(0);
+  opacity: 1;
+}

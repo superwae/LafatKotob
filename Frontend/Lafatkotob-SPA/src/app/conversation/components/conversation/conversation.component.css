@@ -1,0 +1,146 @@
+.Chat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 140px);
+  overflow: hidden;
+}
+
+.test {
+  flex-grow: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #bd87cc #f0f0f0;
+  margin-bottom: 90px;
+}
+.conversation-box {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.conversation-box textarea {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.conversation-box button {
+  padding: 10px 20px;
+}
+
+#MessageForm {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+#MessageForm input {
+  padding: 10px;
+  flex: 1;
+  border-radius: 10px;
+  border: #bd87cc solid 2px;
+  background-color:white;
+}
+
+#MessageForm button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #bd87cc;
+  color: white;
+  cursor: pointer;
+
+  border-radius: 10px;
+
+  margin: 0px 5px;
+  font-size: 1.2rem;
+}
+#MessageForm input:focus {
+  outline: none;
+  border:  solid 2px #00f5d4;
+  background: #f0f0f0;
+}
+
+.ChatHead {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #ffffff21;
+}
+
+.ChatHead .group:hover {
+  background-color: transparent;
+}
+
+.ChatHead .group {
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.ChatHead .group .GroupName {
+  font-size: 1.3rem;
+  padding-left: 20px;
+}
+
+.ChatHead .group .avatar {
+  padding: 5px;
+  height: 40px;
+  width: 40px;
+}
+.new-message-indicator {
+  position:fixed;
+  bottom: 15%;
+  right:40px;
+  padding: 40px 20px;
+  background:none;
+  color: #bd87cc;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+.welcome-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.profile-picture-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #00f5d4;
+}
+
+.profile-picture-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.profile-picture-border svg {
+  width: 50%;
+  height: 50%;
+  fill: none;
+}
+
+.welcome-container p {
+  font-size: 1em;
+  color: #333;
+}

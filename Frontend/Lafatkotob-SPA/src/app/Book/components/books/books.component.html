@@ -1,0 +1,16 @@
+<div class="book-grid-wrapper" *ngIf="books$ | async as books">
+  <ng-container *ngIf="books.length > 0; else noBooksTemplate">
+    <div class="book-grid">
+      <ng-container *ngFor="let book of books; trackBy: trackByBook">
+        <app-book
+          class="book-card-container custom-book-height"
+          [book]="book"
+        ></app-book>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #noBooksTemplate>
+  <div class="no-books-found">No books found.</div>
+</ng-template>

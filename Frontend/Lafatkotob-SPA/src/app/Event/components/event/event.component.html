@@ -1,0 +1,49 @@
+<div class="page-event">
+  <div class="container">
+    <div class="upcoming-event-list">
+      <div class="event-block" *ngIf="event" [routerLink]="['/event-details', event.id]">
+        <!-- Enhanced colored stripe and title bar for the event date -->
+
+        <div class="event-stripe"></div>
+
+        <div class="event-info">
+          <div class="book-user-info">
+            <div *ngIf="User && User.name " class="book-user-info">
+              <img *ngIf="User.profilePicture" [src]="User.profilePicture" alt="User Profile"
+                (click)="GetInfoForUserProfile(true, User.name)" class="user-profile-image" />
+            </div>
+            <a *ngIf="User && User.name" [routerLink]="['/user', User.name]"
+              (click)="GetInfoForUserProfile(true, User.name)">
+              {{ User.name }}</a>
+
+
+          </div>
+          <div class="event-title-bar">
+            {{ event.dateScheduled | date: 'MMM dd' | lowercase }}
+          </div>
+
+          <div class="title">{{ event.eventName }}</div>
+          <div class="venue">
+            <i class="fa fa-map-marker"></i> {{ event.location }}
+            in : {{ event.subLocation }}
+          </div>
+          <div class="date">Attendances: {{ event.attendances }}</div>
+          <div class="datetime">
+            <div class="date-day">
+              <i class="fa fa-calendar"></i>
+              {{ event.dateScheduled | date: 'fullDate' }}
+            </div>
+            <div class="time">
+              <i class="fa fa-clock"></i>
+              {{ event.dateScheduled | date: 'shortTime' }}
+            </div>
+          </div>
+        </div>
+        <div class="event-image">
+          <img *ngIf="event.imagePath" [src]="event.imagePath" [alt]="'Cover image of ' + event.eventName"
+            class="event__image" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

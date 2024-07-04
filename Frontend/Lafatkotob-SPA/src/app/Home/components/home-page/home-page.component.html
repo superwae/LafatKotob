@@ -1,0 +1,45 @@
+<div class="home-page-container">
+  <div class="initial-view-container">
+    <!-- Header Component Container -->
+    <div class="big-header-container">
+      <app-magic-text></app-magic-text>
+    </div>
+
+    <!-- Recommendation Component Container -->
+    <div class="recommendation-container" *ngIf="isLoggedIn">
+      <app-recommendation></app-recommendation>
+    </div>
+
+    <!-- Search Component Container -->
+    <div class="search-bar-container">
+      <app-search-bar (search)="handleSearch($event)"></app-search-bar>
+    </div>
+  </div>
+
+  <!-- Type Filter Container -->
+  <div class="type-filter-container">
+    <button (click)="handleFilterChange('books')">Books</button>
+    <button (click)="handleFilterChange('events')">Events</button>
+  </div>
+
+  <!-- Conditional Rendering based on viewType -->
+  <ng-container *ngIf="viewType === 'books'">
+    <div class="filter-container">
+      <app-filter (genreSelect)="handleGenreSelect($event)"></app-filter>
+    </div>
+    <div class="books-display-container">
+      <app-books [books]="searchResults"></app-books>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="viewType === 'events'">
+    <div class="filter-container">
+      <app-event-filter
+        (citySelect)="handleCitySelect($event)"
+      ></app-event-filter>
+    </div>
+    <div class="events-display-container">
+      <app-events [events]="filteredEvents"></app-events>
+    </div>
+  </ng-container>
+</div>

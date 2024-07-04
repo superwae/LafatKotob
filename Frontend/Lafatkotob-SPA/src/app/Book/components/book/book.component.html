@@ -1,0 +1,115 @@
+<div class="book-card-container custom-book-height">
+  <div *ngIf="book" class="book-card" [routerLink]="['/book-details', book.id]">
+    <div *ngIf="userId === book.userId; else otherUserTemplate">
+      <button class="options-button" (click)="toggleOptions(book.id, $event)">
+        <i class="fa fa-ellipsis-h"></i>
+      </button>
+      <div class="options-container" [class.show]="isOptionsShown(book.id)">
+        <div class="option" (click)="editBook($event)">Edit</div>
+        <div class="option" (click)="deleteBook(book.id, $event)">Delete</div>
+      </div>
+    </div>
+    <div class="left-column">
+      <div class="book-user-info">
+        <img
+          *ngIf="book.userProfilePicture && book.userName"
+          [src]="book.userProfilePicture"
+          alt="User Profile"
+          (click)="GetInfoForUserProfile(true, book.userName)"
+          class="user-profile-image"
+        />
+        <a
+          [routerLink]="['/user', book.userName]"
+          *ngIf="book.userName"
+          (click)="GetInfoForUserProfile(true, book.userName)"
+        >
+          {{ book.userName }}</a
+        >
+      </div>
+
+      <img
+        [src]="book.coverImage ? book.coverImage : defaultImageUrl"
+        class="book-card__image"
+        (error)="onImageError($event)"
+        (load)="onImageLoad($event)"
+        alt="Book Cover"
+      />
+    </div>
+    <div class="book-card__info">
+      <h2 class="book-card__title">{{ book.title }}</h2>
+      <p class="book-card__author">By: {{ book.author }}</p>
+      <p class="book-card__type">{{ book.type }}</p>
+      <p class="book-card__language">{{ book.language }}</p>
+      <p *ngIf="book.type !== 'buy'" class="book-card__status">
+        Status: {{ book.status }}
+      </p>
+    </div>
+
+    <div class="book-card-actions" *ngIf="userId === book.userId">
+      <button
+        *ngIf="book.type === 'sell' && book.userId !== book.partnerUserId"
+        (click)="sellBook(book, $event)"
+        [class.checked]="book.userId === book.partnerUserId"
+        class="book-card-action-button2"
+      >
+        <span class="text">Sold</span>
+      </button>
+
+      <button
+        *ngIf="book.type === 'buy' && book.userId !== book.partnerUserId"
+        (click)="buyBook(book, $event)"
+        [class.checked]="book.userId === book.partnerUserId"
+        class="book-card-action-button2"
+      >
+        <span class="text">Bought</span>
+      </button>
+
+      <button
+        *ngIf="book.userId === book.partnerUserId"
+        (click)="sellBook(book, $event)"
+        class="book-card-action-button2 sold"
+      >
+        <i class="fa fa-check"></i>
+      </button>
+    </div>
+
+    <!-- Action Buttons for Users Other Than Owner -->
+
+    <div class="book-card-actions" *ngIf="userId !== book.userId && isLoggedIn">
+      <button
+        (click)="onLikeBook(book.id, $event)"
+        class="book-card-action-button"
+        [class.liked]="book.isLikedByCurrentUser"
+      >
+        <i class="fa fa-heart"></i>
+      </button>
+      <button
+        (click)="onOpenChat(book.userId, $event)"
+        class="book-card-action-button"
+      >
+        <i class="fa fa-comment"></i>
+      </button>
+    </div>
+  </div>
+
+  <ng-template #otherUserTemplate>
+    <div *ngIf="userRole === 'Admin'; else regularUserTemplate">
+      <!-- Admin's view -->
+      <button class="options-button" (click)="toggleOptions(book.id, $event)">
+        <i class="fa fa-ellipsis-h"></i>
+      </button>
+      <div class="options-container" [class.show]="isOptionsShown(book.id)">
+        <div class="option" (click)="deleteBook(book.id, $event)">Delete</div>
+      </div>
+    </div>
+    <ng-template #regularUserTemplate>
+      <!-- Regular user's view -->
+      <button class="options-button" (click)="toggleOptions(book.id, $event)">
+        <i class="fa fa-ellipsis-h"></i>
+      </button>
+      <div class="options-container" [class.show]="isOptionsShown(book.id)">
+        <div class="option" (click)="reportBook(book.id, $event)">Report</div>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

@@ -1,0 +1,229 @@
+.event-details-container {
+  max-width: 1000px;
+  margin: 25vh;
+  padding: 50px;
+  box-shadow: 0 2px 4px #9c85f0;
+  background-color: #f9f9f9;
+}
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+h2 {
+  font-size: 2.5rem;
+}
+p {
+  font-size: 1.5rem;
+  padding: 10px 0;
+}
+.image-preview {
+  max-width: 300px;
+  max-height: 300px;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Adjust as per your layout */
+}
+.worrning {
+  color: red;
+  font-size: 0.4em;
+}
+.custom-button {
+  padding: 10px 20px;
+  background-color: #beb9c2; /* Green */
+  border: none;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px; /* Adjust to get the shape you want */
+}
+.custom-button:hover {
+  background-color: #9ac7c4; /* Darker shade of green on hover */
+}
+
+.image-container {
+  height: 340px;
+  width: 220px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px dotted black;
+  padding: 2rem;
+}
+.upcoming-event-list {
+  color: #000;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  margin-top: 1vh;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #201016; /* Set the color here */
+  margin: 20px 0; /* Adjust margin as needed */
+}
+.insert-button {
+  background-color: #8555a0;
+  object-position: right;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.insert-button {
+  padding: 10px 20px;
+  background-color: #15c691;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.insert-button:hover {
+  background-color: #845678;
+}
+.delete-button {
+  background-color: #845678;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+
+  margin: 5px;
+}
+
+.delete-button:hover {
+  background-color: #15c691;
+}
+
+.delete-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+}
+.app-event {
+  width: calc(70% - 9.5px);
+}
+.no-events {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.5em;
+}
+
+.register-button {
+  background-color: #a17995; /* Green background color */
+  border: none; /* Remove border */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Add padding */
+  text-align: center; /* Center text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make it inline block */
+  font-size: 16px; /* Set font size */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Add transition for hover effect */
+}
+.DeleteEvent {
+  background-color: #1c8053; /* Green background color */
+  border: none; /* Remove border */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Add padding */
+  text-align: center; /* Center text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make it inline block */
+  font-size: 12px; /* Set font size */
+  border-radius: 20px; /* Rounded corners */
+  transition: background-color 0.3s; /* Add transition for hover effect */
+}
+.DeleteEvent:hover {
+  background-color: #bdd8d8; /* Darker green color on hover */
+  color: #000000;
+  cursor: pointer;
+}
+/* Hover effect */
+.register-button:hover {
+  background-color: #a3bda4; /* Darker green color on hover */
+  color: #6f1b70;
+  cursor: pointer; /*Change cursor to pointer on hover */
+}
+.upload-image-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #5f6099;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the end of the container */
+  margin-bottom: 20px; /* Add some space below the buttons */
+}
+
+.DeleteEvent {
+  margin-left: 10px; /* Add space between buttons */
+}
+
+.upload-image-label:hover {
+  background: #beadfa;
+}
+
+.upload-icon {
+  margin-right: 8px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.event-details-content {
+  display: flex;
+  justify-content: center; /* يوسع المحتوى في الوسط */
+}
+
+.event-details-text {
+  width: 50%; /* حجم النصف من العرض */
+  padding-right: 0vh;
+  font-size: 3vh; /* حجم الخط */
+  font-family: Arial, sans-serif; /* نوع الخط */
+}
+
+.event-details-image-container {
+  width: 60%; /* حجم النصف من العرض */
+}
+
+.event-details-image {
+  width: 100%; /* تعبئة الصورة بالكامل */
+  max-width: 400px; /* حد أقصى للعرض للحفاظ على نسبة العرض إلى الارتفاع */
+  height: 100%; /* تلقائياً */
+}
+
+.event-info {
+  margin-top: 10px;
+}
+
+.event-info p {
+  margin: 1px 0;
+}

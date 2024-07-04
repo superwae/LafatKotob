@@ -1,0 +1,120 @@
+:root {
+  --primary-color: #beadfa;
+  --primary-color-light: #e8e8e8;
+  --primary-color-dark: #9c85f0;
+
+  --secondary-color: #a7c6ed;
+  --secondary-color-light: #d2e2f5;
+  --secondary-color-dark: #2a74d2;
+
+  --success-color: #28a745;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --header-font-size-base: 15vw;
+}
+
+.home-page-container {
+  padding: 1rem;
+  height: 100%;
+}
+
+.big-header-container {
+  width: 100%;
+  margin-top: 10vh;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.big-header h1 {
+  font-size: calc(var(--header-font-size-base) + 1rem);
+  color: black;
+  transition: font-size 0.5s ease;
+}
+
+.highlight {
+  color: purple;
+  text-shadow: 0 0 5px rgba(128, 0, 128, 0.7);
+}
+
+.initial-view-container {
+  height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .big-header h1 {
+    font-size: calc(var(--header-font-size-base) + 0.5rem);
+  }
+}
+
+.recommendation-container {
+  margin-bottom: 2rem;
+}
+
+.search-bar-container {
+  margin: 2rem auto;
+  max-width: 50vw;
+}
+.filter-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.books-display-container {
+  margin: 2rem auto;
+  max-width: 60vw;
+}
+
+.type-filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.type-filter-container button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.type-filter-container button:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.type-filter-container button.active {
+  background-color: var(--secondary-color-dark);
+  color: var(--light-color);
+}
+@media (max-width: 768px) {
+  .type-filter-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .recommendation-container {
+    display: none;
+  }
+}
+.no-events-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  font-size: 24px;
+  color: #6c757d;
+  font-weight: bold;
+  text-align: center;
+}

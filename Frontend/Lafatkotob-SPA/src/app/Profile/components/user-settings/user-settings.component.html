@@ -1,0 +1,121 @@
+<div class="container">
+  <div *ngIf="!showPassword">
+    <!-- User settings form -->
+    <form [formGroup]="userForm" (ngSubmit)="updateUser()" novalidate>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+          required
+          autocomplete="email"
+        />
+        <small
+          class="error-message"
+          *ngIf="
+            userForm.get('email')?.touched &&
+            userForm.get('email')?.errors?.['email']
+          "
+        >
+          Please enter a valid email.
+        </small>
+        <small
+          class="error-message"
+          *ngIf="
+            userForm.get('email')?.touched &&
+            userForm.get('email')?.errors?.['required']
+          "
+        >
+          Email is required.
+        </small>
+        <small
+          class="error-message"
+          *ngIf="
+            userForm.get('email')?.touched &&
+            userForm.get('email')?.errors?.['pattern']
+          "
+        >
+          Please enter a valid email format.
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="userName">Username</label>
+        <input
+          type="text"
+          id="userName"
+          class="form-control"
+          formControlName="userName"
+          required
+          autocomplete="username"
+        />
+      </div>
+      <div class="form-group">
+        <label for="about">About</label>
+        <textarea
+          id="about"
+          class="form-control"
+          formControlName="about"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <select id="city" class="form-control" formControlName="city">
+          <option value="">Select a city</option>
+          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="isLoading">Update</button>
+      <button (click)="ToggleShowPassword()">chang password</button>
+      <button (click)="resendEmail()" [disabled]="isResendDisabled">
+        Resend Email
+      </button>
+      <span *ngIf="isResendDisabled">
+        Check your Email! ,You can try again in : {{ resendTimer }} sec</span
+      >
+    </form>
+  </div>
+  <!-- Password update form -->
+  <div *ngIf="showPassword">
+    <form [formGroup]="PasswordForm" (ngSubmit)="changePassword()" novalidate>
+      <div class="form-group">
+        <label for="currentPassword">Current Password</label>
+        <input
+          type="password"
+          id="OldPassword"
+          class="form-control"
+          formControlName="OldPassword"
+          autocomplete="current-password"
+        />
+      </div>
+      <div class="form-group">
+        <label for="newPassword">New Password</label>
+        <input
+          type="password"
+          id="NewPassword"
+          class="form-control"
+          formControlName="NewPassword"
+          autocomplete="new-password"
+        />
+      </div>
+      <div class="form-group">
+        <label for="confirmNewPassword">Confirm New Password</label>
+        <input
+          type="password"
+          id="ConfirmPassword"
+          class="form-control"
+          formControlName="ConfirmPassword"
+          autocomplete="new-password"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+        Update Password
+      </button>
+      <button class="btn btn-primary" (click)="ToggleShowPassword()">
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>

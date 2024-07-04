@@ -1,0 +1,40 @@
+.book-grid-wrapper {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 120px;
+  justify-content: center;
+}
+
+app-book {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding shadow for depth */
+  border-radius: 10px; /* Rounded corners for a smoother look */
+  overflow: hidden; /* Ensures no overflow */
+  margin: auto;
+}
+
+.book-grid-wrapper .book-grid .book-card-container.custom-book-height {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 350px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.no-books-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  font-size: 24px;
+  color: #6c757d;
+  font-weight: bold;
+  text-align: center;
+}

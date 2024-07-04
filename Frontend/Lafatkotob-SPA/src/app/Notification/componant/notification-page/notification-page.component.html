@@ -1,0 +1,14 @@
+<h1 class="">Notifications</h1>
+<div *ngIf="Notifications$ | async as NotificationModel">
+  <button class="clear-button">Clear Notifications</button>
+  <ng-container>
+    <app-notification
+      *ngFor="let notification of notifications; trackBy: trackByNotification"
+      [Notification]="notification"
+    >
+    </app-notification>
+  </ng-container>
+</div>
+<div *ngIf="!notifications">
+  <p>No notifications</p>
+</div>

@@ -1,0 +1,22 @@
+.page-container {
+  display: grid;
+  grid-template-rows: 10px 1fr;
+  grid-template-columns: 200px 1fr;
+  height: 100vh;
+}
+
+.navbar {
+  grid-column: 1 / -1;
+  z-index: 2;
+}
+
+.sidebar {
+  grid-row: 2 / 3;
+  z-index: 1;
+}
+
+.main-content {
+  grid-row: 2 / 3;
+  margin-top: 5rem;
+  overflow-y: auto;
+}

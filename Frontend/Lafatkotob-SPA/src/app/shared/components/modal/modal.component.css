@@ -1,0 +1,309 @@
+.middle {
+  text-align: center;
+}
+
+.middle h1 {
+  font-family: "Inter", sans-serif;
+  color: #fff;
+}
+
+.middle input[type="radio"] {
+  display: none;
+}
+
+.middle input[type="radio"]:checked + .box {
+  background-color: #9c85f0;
+}
+
+.middle input[type="radio"]:checked + .box span {
+  color: white;
+  transform: translateY(0px);
+}
+
+.middle input[type="radio"]:checked + .box span:before {
+  transform: translateY(0px);
+  opacity: 1;
+}
+.middle label {
+  display: inline-block;
+  margin-right: 0;
+}
+.middle .box:hover {
+  background-color: #beadfa;
+  color: white;
+}
+.error-message {
+  color: red;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.error-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.middle .box {
+  width: 100px;
+  height: 35px;
+  line-height: 40px;
+  background-color: #fff;
+  transition: all 250ms ease;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  justify-content: center;
+  align-items: center;
+}
+
+.middle .box:active {
+  transform: translateY(10px);
+}
+
+.middle .box span {
+  position: absolute;
+  transform: translate(0, -6px);
+  left: 0;
+  right: 0;
+  transition: all 300ms ease;
+  font-size: 0.8em;
+  user-select: none;
+  color: #000;
+}
+
+.middle .box span:before {
+  font-size: 0.6em;
+  font-family: FontAwesome;
+  display: block;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  font-weight: normal;
+  color: white;
+}
+
+.middle p {
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+}
+
+.middle p a {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #fff;
+}
+
+.middle p span:after {
+  font-family: FontAwesome;
+  color: yellow;
+}
+
+.radio-label {
+  background-color: #bbb;
+  padding: 10px;
+  border-radius: 1px;
+}
+
+.radio-label:hover {
+  background-color: #9c85f0;
+}
+
+.radio-row {
+  display: flex;
+  gap: 100px;
+}
+
+.order-type,
+.order-condition {
+  margin: 0 5px;
+}
+
+.label-row {
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 0px;
+  margin-bottom: 0px;
+  height: 35px;
+}
+.label-row pre {
+  font-family: FontAwesome;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ensures vertical alignment among children */
+  margin-top: 15px;
+}
+
+.isbn-page-count {
+  flex: 1; /* Allows input groups to fill equal space */
+  margin-right: 35px; /* Consistent spacing between input groups and the button */
+}
+
+.isbn-page-count label {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.isbn-page-count input {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #fff;
+  width: 100%; /* Ensures input width matches the parent */
+}
+
+/* Remove margin-right for the last ISBN/Page Count input group */
+.isbn-page-count:last-child {
+  margin-right: 0;
+}
+
+.post-button {
+  padding: 10px 20px;
+  background-color: #5f6099;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  /* Align button height with input fields */
+  height: auto; /* Adjust height based on content and padding */
+  align-self: flex-end; /* Aligns the button at the same baseline as inputs */
+}
+
+.post-button:hover {
+  background-color: #beadfa;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #e8e8e8;
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  color: black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-top-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.modal-content {
+  flex: 70%;
+  padding: 10px;
+  padding-top: 0px;
+}
+.modal-content-right {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.upload-icon {
+  margin-right: 8px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.modal-body {
+  margin-bottom: 20px;
+}
+
+.order-type label,
+.visibility-toggle label {
+  margin-right: 0px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group select,
+.input-group input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-half {
+  flex: 1; /* Each input group takes equal width */
+  margin-right: 35px; /* Add some space between the input groups */
+}
+
+.input-half:last-child {
+  margin-right: 0; /* Removes margin from the last input group to avoid extra spacing */
+}
+
+.modal-header,
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  margin-bottom: 1px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  width: 90%;
+  max-width: 750px;
+  max-height: 30vh;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

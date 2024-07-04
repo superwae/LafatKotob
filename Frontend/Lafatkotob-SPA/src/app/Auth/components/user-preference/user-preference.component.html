@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="b">
+    <br />
+    <div class="user-preferences-container">
+      <div class="user-preference-image-selection">
+        <!-- Image preview with a close button to remove the image -->
+        <div *ngIf="selectedImageUrl" class="image-container">
+          <img
+            [src]="selectedImageUrl"
+            alt="Selected Image"
+            class="image-preview"
+          />
+
+          <button
+            *ngIf="selectedImageUrl"
+            class="remove-image-button"
+            (click)="removeSelectedImage()"
+          >
+            &times;
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="!selectedImageUrl" class="picbtn" (click)="fileInput.click()">
+        <!-- Hidden file input -->
+        <input
+          #fileInput
+          type="file"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          hidden
+        />
+
+        <!-- Clickable label for the file input -->
+        <label class="upload-image-label">
+          <i class="fa fa-upload upload-icon"></i> Upload Your Profile Image
+        </label>
+      </div>
+
+      <div class="message">
+        <hr />
+        Please select at least 3 genres.
+        <hr />
+      </div>
+      <div class="point">
+        <div class="genres-container">
+          <button
+            type="button"
+            class="genre-button"
+            *ngFor="let genre of genres"
+            [class.selected]="genre.selected"
+            (click)="toggleGenreSelection(genre)"
+          >
+            {{ genre.name }}
+          </button>
+        </div>
+
+        <button
+          type="button"
+          class="confirm-button"
+          [disabled]="selectedGenres.length < 3 || isRegistering"
+          (click)="confirmSelection()"
+        >
+          Confirm
+          <fa-icon
+            *ngIf="isRegistering"
+            [icon]="['fas', 'spinner']"
+            [spin]="true"
+          ></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<!-- message.component.html -->
+<div *ngIf="isSender; else LeftMessage" class="msg right-msg">
+  <div class="msg-bubble">
+    <div class="msg-info">
+      <div class="msg-info-name">{{ currentUserInfo?.userName }}</div>
+      <div class="msg-info-time">
+        {{ message?.dateSent | date: "shortTime" }}
+      </div>
+    </div>
+    <div class="msg-text">
+      {{ message?.messageText }}
+    </div>
+  </div>
+</div>
+
+<ng-template #LeftMessage>
+  <div class="msg left-msg">
+    <div class="msg-img">
+      <img [src]="otherUserInfo?.profilePicture" alt="Profile" />
+    </div>
+    <div class="msg-bubble">
+      <div class="msg-info">
+        <div class="msg-info-name">{{ otherUserInfo?.userName }}</div>
+        <div class="msg-info-time">
+          {{ message?.dateSent | date: "shortTime" }}
+        </div>
+      </div>
+      <div class="msg-text">
+        {{ message?.messageText }}
+      </div>
+    </div>
+  </div>
+</ng-template>

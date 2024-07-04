@@ -1,0 +1,129 @@
+<div class="content-center">
+  <div class="container">
+    <div class="modal-header">
+      <h2>Edit Book</h2>
+      <button class="close-button" (click)="close()">×</button>
+    </div>
+    <form [formGroup]="bookForm" (ngSubmit)="saveBook()">
+      <div class="row top-row">
+        <div class="left-col">
+          <div class="text-section">
+            <p>Book Details</p>
+          </div>
+          <!-- Dynamic form fields -->
+          <div
+            class="input-group"
+            *ngFor="
+              let field of [
+                'Title',
+                'Author',
+                'Language',
+                'Description',
+                'ISBN',
+                'PageCount'
+              ]
+            "
+          >
+            <label [attr.for]="field.toLowerCase()">{{ field }}</label>
+            <input
+              *ngIf="field !== 'Description'"
+              [type]="field === 'PageCount' ? 'number' : 'text'"
+              [formControlName]="field"
+              [id]="field.toLowerCase()"
+              [placeholder]="'Enter ' + field.toLowerCase()"
+            />
+            <textarea
+              *ngIf="field === 'Description'"
+              formControlName="Description"
+              id="field.toLowerCase()"
+              rows="4"
+              placeholder="Enter book description"
+            ></textarea>
+          </div>
+          <div class="input-group">
+            <label for="publicationDate">Publication Date</label>
+            <input
+              type="date"
+              formControlName="PublicationDate"
+              id="publicationDate"
+            />
+          </div>
+          <div class="input-group">
+            <label for="status">Status</label>
+            <select formControlName="Condition" id="Condition">
+              <option value="Great">Great</option>
+              <option value="Good">Good</option>
+              <option value="Bad">Bad</option>
+              <option *ngIf="bookForm.get('Type')!.value === 'buy'" value="Any">
+                Any
+              </option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="type">Type</label>
+            <select formControlName="Type" id="type">
+              <option value="sell">Sell</option>
+              <option value="buy">Buy</option>
+            </select>
+          </div>
+        </div>
+        <div class="right-col">
+          <div class="modal-image-holder">
+            <div class="image-container" (click)="triggerFileInput()">
+              <img
+                [src]="selectedImageUrl"
+                alt="Selected Book Image"
+                class="image-preview"
+              />
+              <button
+                *ngIf="selectedImageUrl"
+                class="remove-image-button"
+                (click)="removeSelectedImage()"
+              >
+                ×
+              </button>
+            </div>
+            <input
+              style="display: none"
+              #fileInput
+              type="file"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+            />
+          </div>
+          <div class="genre">
+            <div class="text-section">
+              <p class="select-genre-message">Please select book genres</p>
+            </div>
+            <div class="dropdown-section">
+              <div class="dropdown-add-wrapper">
+                <select
+                  [(ngModel)]="currentSelection"
+                  [ngModelOptions]="{ standalone: true }"
+                  (ngModelChange)="onOptionSelected($event)"
+                >
+                  <option *ngFor="let option of allOptions" [ngValue]="option">
+                    {{ option.name }}
+                  </option>
+                </select>
+
+                <button (click)="addLabel()" type="button" class="add-btn">
+                  Add
+                </button>
+              </div>
+            </div>
+            <div class="labels-wrapper">
+              <div *ngFor="let label of labels; let i = index" class="label">
+                {{ label.name }}
+                <button (click)="removeLabel(i)" class="remove-btn">x</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row bottom-row">
+        <button class="submit-btn">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>

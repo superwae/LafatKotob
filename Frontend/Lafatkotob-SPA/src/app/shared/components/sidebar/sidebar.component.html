@@ -1,0 +1,65 @@
+<nav class="nav" [class.hidden]="!show">
+  <div class="s-layout__sidebar">
+    <a class="s-sidebar__trigger" href="#0">
+      <i class="fa fa-bars"></i>
+    </a>
+
+    <nav class="s-sidebar__nav">
+      <ul>
+        <li>
+          <a
+            class="s-sidebar__nav-link"
+            [routerLink]="['/user', username, 'dash-board']"
+          >
+            <i class="fa fa-home"></i><em>Dashboard</em>
+          </a>
+        </li>
+        <li>
+          <a
+            class="s-sidebar__nav-link"
+            [routerLink]="['/user', username2, 'events']"
+          >
+            <i class="fa fa-calendar"></i><em>Events</em>
+          </a>
+        </li>
+        <li>
+          <a
+            class="s-sidebar__nav-link"
+            [routerLink]="['/user', username2, 'wishlist']"
+          >
+            <i class="fa fa-heart"></i><em>My Wishlist</em>
+          </a>
+        </li>
+        <li>
+          <a
+            class="s-sidebar__nav-link"
+            [routerLink]="['/user', username2, 'Notifications']"
+          >
+            <i class="fa fa-bell"></i><em>Notifications</em>
+          </a>
+        </li>
+        <li>
+          <a class="s-sidebar__nav-link" [routerLink]="['/conversations']">
+            <i class="fa fa-envelope"></i><em>Messages</em>
+          </a>
+        </li>
+        <li>
+          <a
+            class="s-sidebar__nav-link"
+            [routerLink]="['/user', username2, 'user-settings']"
+          >
+            <i class="fa fa-cog"></i><em>Settings</em>
+          </a>
+        </li>
+        <li>
+          <a
+            class="s-sidebar__nav-link"
+            [routerLink]="['/user', username, 'contact-us']"
+          >
+            <i class="fa fa-phone"></i><em>Contact Us</em>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</nav>

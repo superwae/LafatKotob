@@ -1,0 +1,253 @@
+.content-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 800px;
+  transform: translateY(-30px);
+  transition: transform 0.3s ease;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+  width: 100%;
+}
+.top-row {
+  justify-content: space-between;
+  width: 100%;
+}
+.bottom-row {
+  justify-content: flex-end;
+}
+
+.left-col,
+.right-col {
+  flex: 1;
+}
+.text-section {
+  margin-bottom: 20px;
+}
+.dropdown-section {
+  display: flex;
+  align-items: center;
+}
+
+.select-genre-message {
+  flex: 1;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.dropdown-add-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+select {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.add-btn,
+.submit-btn {
+  padding: 8px 12px;
+  background-color: #5f6099;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+.submit-btn {
+  padding: 8px 12px;
+  background-color: #5f6099;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-btn:hover,
+.submit-btn:hover {
+  background-color: #beadfa;
+}
+
+.labels-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.label {
+  padding: 8px;
+  background-color: #beadfa;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.remove-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: #f00;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.modal-image-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.image-container {
+  height: 340px;
+  width: 220px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px dotted black;
+  padding: 2rem;
+}
+
+.image-preview {
+  max-width: 300px;
+  max-height: 340px;
+  object-fit: cover;
+}
+
+.remove-image-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+  color: #f00;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.upload-image-label {
+  display: flex;
+  width: 50%;
+  padding: 10px 20px;
+  background: #5f6099;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-overlay.show .container {
+  transform: translateY(0);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  margin-bottom: 1px;
+  border: none;
+}
+.close-button {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.confirmation-popup {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.confirmation-popup p {
+  margin-bottom: 20px;
+}
+
+.confirmation-popup button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: background-color 0.3s;
+}
+
+.confirmation-popup button:hover {
+  opacity: 0.8;
+}
+
+.confirmation-popup button:first-child {
+  background-color: #9c85f0;
+  color: white;
+}
+.addbook {
+  background-color: #9c85f0;
+}
+.addbook:hover {
+  background-color: #beadfa;
+}
+
+.confirmation-popup button:last-child {
+  background-color: #f3f3f3;
+  color: #333;
+}
+.error-message {
+  color: red;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.error-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

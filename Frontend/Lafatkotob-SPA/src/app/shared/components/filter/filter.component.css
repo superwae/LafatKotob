@@ -1,0 +1,89 @@
+.genre-filter-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.genre-filter-title {
+  font-size: 1.5em;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.genre-filter-line {
+  width: 90%;
+  height: 2px;
+  background-color: var(--primary-color-dark);
+  margin: 0 auto 20px;
+}
+
+.genre-filter-container {
+  max-width: 99vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.genre-filter {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 10px;
+  gap: 10px;
+}
+
+.genre-filter {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.genre-filter::-webkit-scrollbar {
+  height: 8px;
+}
+
+.genre-filter::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.genre-filter::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+  width: 90%;
+}
+
+.genre-filter::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+button {
+  background-color: #ffffff;
+  border: 2px solid #d1d1d1;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none; /* Prevent selection */
+}
+
+button:hover {
+  background-color: #f4f4f4;
+}
+
+button.active {
+  background-color: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}

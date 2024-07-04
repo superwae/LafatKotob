@@ -1,0 +1,28 @@
+<div class="genre-filter-section">
+  <h2 class="genre-filter-title">Filter by City</h2>
+  <div class="genre-filter-line"></div>
+  <div class="genre-filter-container">
+    <div class="genre-filter">
+      <select
+        id="city-select"
+        [(ngModel)]="selectedCity"
+        (change)="onCityChange()"
+        class="genre-filter-select"
+      >
+        <option value="">Any</option>
+        <option value="Ramallah">Ramallah</option>
+        <option value="Jerusalem">Jerusalem</option>
+        <option value="Gaza">Gaza</option>
+        <option value="Nablus">Nablus</option>
+        <option value="Hebron">Hebron</option>
+        <option value="Jenin">Jenin</option>
+        <option value="Tulkarm">Tulkarm</option>
+        <option value="Qalqilya">Qalqilya</option>
+        <option value="Bethlehem">Bethlehem</option>
+        <option value="Jericho">Jericho</option>
+        <option value="Tubas">Tubas</option>
+        <option value="Salfit">Salfit</option>
+      </select>
+    </div>
+  </div>
+</div>

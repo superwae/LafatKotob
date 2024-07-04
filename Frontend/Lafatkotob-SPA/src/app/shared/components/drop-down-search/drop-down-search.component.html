@@ -1,0 +1,16 @@
+<div class="search-container">
+  <div class="col-md-12 d-flex justify-content-center">
+    <div class="search-wrapper">
+      <input
+        class="form-control"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="getSelectedItem()"
+        placeholder="Search..."
+        list="dropDownList"
+      />
+      <datalist id="dropDownList">
+        <option *ngFor="let d of dropDownList" [value]="d.name"></option>
+      </datalist>
+    </div>
+  </div>
+</div>

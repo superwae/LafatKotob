@@ -1,0 +1,17 @@
+<div
+  class="notification"
+  [class.show]="Notification.isRead"
+  (click)="navigateToBook()"
+>
+  <div class="box1">
+    <img [src]="Notification.imgUrl" alt="Profile Picture" class="circle-img" />
+  </div>
+  <div class="box2">
+    <p>{{ Notification.message.split(":")[0] }}</p>
+    <div class="bottom-label">
+      <p class="notification" [class.show]="Notification.isRead">
+        {{ Notification.dateSent | formatDate }}
+      </p>
+    </div>
+  </div>
+</div>

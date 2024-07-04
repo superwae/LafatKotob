@@ -1,0 +1,42 @@
+<div class="outer-container">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input formControlName="name" type="text" id="name" name="name" required appNoNumbers>
+          <div class="error-container">
+            <small class="error" *ngIf="emailForm.controls['name'].touched && emailForm.controls['name'].errors?.['required']">Name is required.</small>
+            <small class="error" *ngIf="emailForm.controls['name'].touched && emailForm.controls['name'].errors?.['hasNumber']">Name cannot contain numbers.</small>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input formControlName="email" type="email" id="email" name="email" required>
+          <div class="error-container">
+            <small class="error" *ngIf="emailForm.controls['email'].touched && emailForm.controls['email'].errors?.['required']">Email is required.</small>
+            <small class="error" *ngIf="emailForm.controls['email'].touched && emailForm.controls['email'].errors?.['pattern']">Please enter a valid email.</small>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="message">What can we help you with?</label>
+          <textarea formControlName="message" id="message" name="message" required></textarea>
+          <div class="error-container">
+            <small class="error" *ngIf="emailForm.controls['message'].touched && emailForm.controls['message'].errors?.['required']">Message is required.</small>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <button type="submit" [disabled]="emailForm.invalid || loading">{{ loading ? 'Sending...' : 'Submit' }}</button>
+        </div>
+  
+        <p class="my-4">
+          If you prefer to contact us by email, please reach out to 
+          <a class="text-blue-500 hover:underline" href="mailto:lafatkotobreports&#64;gmail.com">lafatkotobreports&#64;gmail.com</a>
+        </p>
+      </form>
+    </div>
+  </div>
+  

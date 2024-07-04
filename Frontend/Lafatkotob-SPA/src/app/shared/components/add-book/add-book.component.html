@@ -1,0 +1,12 @@
+<app-modal [show]="showModal" (closeEvent)="closeModal()"> </app-modal>
+
+<div class="box">
+  <button
+    *ngIf="!shouldHideButton()"
+    (click)="openRegisterBookModal()"
+    class="button button--round-l button--text-thick button--border-medium button--text-upper button--size-s button--inverted"
+    data-text="Place Order"
+  >
+    <span>Open</span>
+  </button>
+</div>

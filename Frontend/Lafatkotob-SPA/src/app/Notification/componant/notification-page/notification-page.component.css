@@ -1,0 +1,62 @@
+.notification {
+    position: relative;
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 300px;
+    
+  }
+  @keyframes colorChange {
+    0% {
+        color: #c03366; /* Tomato */
+    }
+    25% {
+        color: #80b9ac; /* Lime Green */
+    }
+    50% {
+        color: #4c827b; /* Dodger Blue */
+    }
+    75% {
+        color: #7f5a6d; /* Hot Pink */
+    }
+    100% {
+        color: #c03366; /* Back to Tomato */
+    }
+}
+
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0px;
+    animation: colorChange 4s linear infinite; /* Duration 4s, infinite loop */
+    color: -webkit-linear-gradient(left, #379283, #db36a4);
+    transition: all 0.3s ease-in-out;
+}
+
+h1:hover {
+    transform: scale(1.1); /* Slightly enlarges on hover */
+    cursor: pointer;
+}
+
+.clear-button {
+  font-family: 'Arial', sans-serif;
+  font-size: 1em;
+  padding: 4px 8px;
+  background-color: transparent; /* Transparent background to give a 'clear' look */
+  border: 2px solid #654d63; /* Tomato-colored border to provide a striking outline */
+  border-radius: 5px; /* Rounded corners */
+  color: #654d63; /* Matching text color with the border */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  visibility: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.clear-button:hover {
+  background-color: #654d63; /* Fills background on hover for a clearer CTA */
+  color: #fff; /* Turns the text white */
+}

@@ -1,0 +1,76 @@
+/* conversations.component.css */
+.container {
+  display: flex;
+  box-sizing: border-box;
+}
+
+.conversations-column {
+  flex: 1;
+  border-right: 2px solid #9c85f0;
+  padding: 4px;
+  margin-top: 70px;
+}
+
+.conversation-details-column {
+  flex: 2;
+  padding: 20px;
+  max-height: calc(100vh - 100px);
+  overflow: hidden;
+  margin-top: 100px;
+}
+
+.conversation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: 90px;
+}
+
+.user-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 70%;
+  margin-right: 10px;
+}
+
+.conversation-info {
+  flex: 1;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 16px;
+  font-family: Cursive;
+}
+
+.last-message {
+  margin: 0;
+  font-size: 14px;
+  font-family: Cursive;
+}
+.selected {
+  background: #41e7b0;
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding-left: 12px;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.conversation:hover {
+  background: #41e7b0;
+  color: white;
+  cursor: pointer;
+}
+.conversation-unread {
+  border-left: 5px solid #41e7b0;
+  background-color: black;
+}
+.unread-indicator {
+  color: red;
+  font-size: 10px;
+  margin-left: 5px;
+}

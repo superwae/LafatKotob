@@ -1,0 +1,43 @@
+<div class="container">
+  <div
+    class="conversations-column"
+    *ngIf="conversations$ | async as conversations"
+  >
+    <!-- Existing Conversations -->
+    <div
+      *ngFor="let conversation of conversations; trackBy: trackByConversation"
+      (click)="selectConversation(conversation)"
+      [class.selected]="
+        selectedConversation?.conversationId === conversation.conversationId
+      "
+      class="conversation"
+    >
+      <img
+        [src]="conversation.userProfilePicture"
+        alt="User Image"
+        class="user-image"
+      />
+      <div class="conversation-info">
+        <h5 class="user-name">
+          {{ conversation.userName }}
+          <i
+            *ngIf="
+              conversation.hasUnreadMessages &&
+              conversation.lastMessageSender !== currentUserId
+            "
+            class="fas fa-circle unread-indicator"
+          ></i>
+        </h5>
+        <p class="last-message">{{ conversation.lastMessage }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="conversation-details-column">
+    <ng-container *ngIf="selectedConversation$ | async as selectedConversation">
+      <app-conversation
+        [conversation]="selectedConversation$ | async"
+      ></app-conversation>
+    </ng-container>
+  </div>
+</div>

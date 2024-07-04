@@ -1,0 +1,103 @@
+.user-preferences-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 60vw;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  margin-top: 15vh;
+  padding: 20px;
+  justify-content: center;
+}
+.message {
+  margin-bottom: 10px;
+  padding: 30px 10px;
+  color: black;
+}
+
+.genres-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+
+.genre-button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: background-color 1;
+  transition: 0.3s;
+}
+
+.genre-button.selected {
+  background-color: #9c85f0;
+  border-radius: 26px;
+  border-color: #9c85f0;
+}
+
+.confirm-button {
+  padding: 10px 20px;
+  background-color: #9c85f0;
+  color: white;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  transform: 0.3s;
+}
+
+.confirm-button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.confirm-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.picbtn {
+  padding: 30px 60px;
+  background-color: #8366ee;
+  color: white;
+  border-radius: 5px;
+  border: rebeccapurple;
+}
+.picbtn:hover,
+.upload-image-label:hover {
+  cursor: pointer;
+  background-color: rgba(58, 52, 94, 1);
+}
+
+.picbtn i,
+.upload-image-label i {
+  border: none !important;
+  outline: none !important;
+}
+.b {
+  border-style: groove;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.image-preview {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.picp {
+  background-color: none;
+  border: none;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

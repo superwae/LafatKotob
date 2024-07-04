@@ -1,0 +1,136 @@
+<div *ngIf="event" class="event-details-container">
+  <div style="text-align: right">
+    <button
+      *ngIf="IfPre"
+      class="DeleteEvent"
+      (click)="DeleteEvent($event)"
+      mat-raised-button
+      color="warn"
+    >
+      Delete Event
+    </button>
+    <button *ngIf="IfPre" class="DeleteEvent" (click)="openForm()">
+      Update Event
+    </button>
+  </div>
+  <div class="event-details-content">
+    <div class="event-details-image-container" *ngIf="!IfUpdate">
+      <img
+        *ngIf="event.imagePath"
+        [src]="event.imagePath"
+        [alt]="event.eventName"
+        class="event-details-image"
+      />
+    </div>
+
+    <div class="event-details-text" *ngIf="!IfUpdate">
+      <h2>{{ event.eventName }}</h2>
+      <p>{{ event.description }}</p>
+      <div class="event-info">
+        <p>
+          <i class="fa fa-clock-o"></i>
+          {{ event.dateScheduled | date: 'fullDate' }}, {{ event.dateScheduled | date: 'shortTime' }}
+        </p>
+        <div>
+          <p><i class="fa fa-map-marker"></i> {{ event.location }}</p>
+          <p>
+            <i class="fa fa-users"></i> Attendances: {{ event.attendances }}
+          </p>
+        </div>
+      </div>
+      <br /><br />
+      <button
+        *ngIf="!unregesterButtonState"
+        class="register-button"
+        [disabled]="isDisabled"
+        (click)="register($event)"
+      >
+        Register
+      </button>
+      <span class="worrning" *ngIf="isDisabled && isDisabled2">
+        You can't do this action for: {{ resendTimer }} sec
+      </span>
+      <button
+        *ngIf="unregesterButtonState"
+        class="register-button"
+        [disabled]="isDisabled2"
+        (click)="Unregister($event)"
+      >
+        Unregister
+      </button>
+      <span class="worrning" *ngIf="isDisabled2 && !isDisabled">
+        You can't do this action for: {{ resendTimer }} sec
+      </span>
+    </div>
+    
+    
+
+    <div *ngIf="IfUpdate">
+      <form [formGroup]="form" class="form" (ngSubmit)="UpdateEvent()">
+        <label for="HostName">HostName:</label><br />
+        <input
+          type="text"
+          id="HostName"
+          name="HostName"
+          formControlName="HostName"
+        /><br />
+        <label for="EventName">EventName:</label><br />
+        <input
+          type="text"
+          id="EventName"
+          name="EventName"
+          formControlName="EventName"
+        /><br />
+        <label for="Description">Description:</label><br />
+        <input
+          type="text"
+          id="Description"
+          name="Description"
+          formControlName="Description"
+        /><br />
+
+        <label for="DateScheduled">DateScheduled:</label><br />
+        <input
+          type="date"
+          id="DateScheduled"
+          name="DateScheduled"
+          formControlName="DateScheduled"
+        /><br />
+        <label for="Location">Location:</label><br />
+        <input
+          type="text"
+          id="Location"
+          name="Location"
+          formControlName="Location"
+        /><br />
+
+        <div
+          class="image-container"
+          onclick="document.getElementById('file-input').click()"
+        >
+          <img
+            id="ImagePath"
+            name="ImagePath"
+            [src]="selectedImageUrl"
+            alt="Selected Book Image"
+            class="image-preview"
+          />
+          <input
+            type="file"
+            id="file-input"
+            style="display: none"
+            (change)="onFileSelected($event)"
+            accept="image/*"
+          />
+        </div>
+
+        <div class="button-container">
+          <button type="submit" class="delete-button">Update Event</button>
+          <button type="reset" class="delete-button" (click)="CloseForm()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

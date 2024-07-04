@@ -1,0 +1,52 @@
+<section class="Chat">
+  <div class="test" *ngIf="messages$ | async as messages" #scrollContainer>
+    <!-- Scrollable message container -->
+    <div *ngIf="!chatStarted" class="welcome-container">
+      <h1>Welcome to the Chat</h1>
+      <div class="profile-picture-container">
+        <img
+          [src]="otherUserInfo?.profilePicture"
+          (error)="errorHandler($event)"
+          alt="User Profile Picture"
+          class="profile-picture"
+        />
+        <div class="profile-picture-border">
+          <svg>
+            <circle cx="30" cy="30" r="28" />
+          </svg>
+        </div>
+      </div>
+      <p>Hi {{ otherUserInfo?.userName }}!</p>
+    </div>
+    <div *ngFor="let message of messages; trackBy: trackByMessage">
+      <app-message
+        [message]="message"
+        [currentUserInfo]="currentUserInfo"
+        [otherUserInfo]="otherUserInfo"
+      ></app-message>
+    </div>
+
+    <!-- New Message Indicator -->
+    <button
+      *ngIf="showNewMessageIndicator"
+      (click)="scrollToBottom()"
+      class="new-message-indicator"
+    >
+      <i class="fa fa-arrow-down">{{ newMessageIndicatorText }}</i>
+    </button>
+
+    <!-- Conversation Box -->
+    <form id="MessageForm" (ngSubmit)="sendMessage()">
+      <input
+        type="text"
+        id="MessageInput"
+        [(ngModel)]="newMessage.messageText"
+        name="message"
+        autocomplete="off"
+      />
+      <button type="submit" class="Send">
+        <fa-icon [icon]="faPaperPlane"></fa-icon>
+      </button>
+    </form>
+  </div>
+</section>

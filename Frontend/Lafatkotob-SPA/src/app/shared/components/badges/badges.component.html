@@ -1,0 +1,16 @@
+<div class="badges-container">
+  <ul class="badge-list">
+    <li
+      *ngFor="let badge of filteredBadges"
+      class="badge-type"
+      (mouseover)="onHover(true)"
+      (mouseleave)="onHover(false)"
+      [appTooltip]="badge.description"
+    >
+      <img
+        [src]="'assets/images/' + badge.badgeName + '.svg'"
+        alt="{{ badge.badgeName }}"
+      />
+    </li>
+  </ul>
+</div>

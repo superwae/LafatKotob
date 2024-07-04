@@ -1,0 +1,68 @@
+<div class="d-flex flex-column h-lg-full bg-surface-secondary">
+  <div class="search-bar-container">
+    <app-search-bar (search)="handleSearch($event)"></app-search-bar>
+  </div>
+</div>
+
+<main class="py-6 bg-surface-secondary">
+  <div class="container-fluid">
+    <div class="user-table">
+      <div class="table-row header-row">
+        <div class="table-cell"></div>
+        <div class="table-cell">Name</div>
+        <div class="table-cell">City</div>
+        <div class="table-cell">Last Login</div>
+        <div class="table-cell">E-mail</div>
+        <div class="table-cell">Is Deleted</div>
+        <div class="table-cell">Role</div>
+        <div class="table-cell">Actions</div>
+      </div>
+      <div class="table-row" *ngFor="let user of allUsers">
+        <div class="table-cell">
+          <div class="profile-pic-cell">
+            <a [routerLink]="['/user', user.name]" *ngIf="user.name">
+              <img
+                *ngIf="user.profilePicture"
+                [src]="user.profilePicture"
+                alt="User Profile"
+                class="user-profile-image"
+              />
+            </a>
+          </div>
+        </div>
+
+        <div class="table-cell">{{ user.name }}</div>
+        <div class="table-cell">{{ user.city }}</div>
+        <div class="table-cell">{{ user.lastLogin }}</div>
+        <div class="table-cell">{{ user.email }}</div>
+        <div class="table-cell">{{ user.isDeleted }}</div>
+
+        <div class="table-cell">
+          <select #userRoleDropdown [(ngModel)]="user.roles">
+            <option *ngFor="let role of roles" [value]="role">
+              {{ role }}
+            </option>
+          </select>
+        </div>
+        <div class="table-cell">
+          <button *ngIf="!user.isDeleted" (click)="deleteUser(user)">
+            Delete
+          </button>
+          <button *ngIf="user.isDeleted" (click)="deleteUser(user)">
+            Restore
+          </button>
+          <button (click)="saveUser(user)">
+            {{ user.saving ? "Updating..." : "Save" }}
+          </button>
+          <div
+            *ngIf="user.showCheck"
+            class="check-icon"
+            [ngClass]="{ 'show-check': user.showCheck }"
+          >
+            <i class="fa fa-check"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

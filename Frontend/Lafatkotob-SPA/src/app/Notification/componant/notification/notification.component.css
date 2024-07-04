@@ -1,0 +1,93 @@
+.notification {
+  position: relative;
+  background-color: rgb(95, 181, 159);
+  color: #333;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 5px auto;
+  max-width: 500px;
+  max-height: 200px;
+  font-size: 1rem;
+  animation:
+    slideIn 0.5s forwards,
+    slideOut 0.5s forwards 2.5s;
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.notification.show {
+  background-color: rgb(244, 238, 246);
+}
+.notification2 {
+  background-color: rgb(230, 222, 222);
+  position: relative;
+
+  color: #333;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 5px auto;
+  max-width: 500px;
+  max-height: 200px;
+}
+.bottom-label {
+  position: absolute;
+  test-size: 15px;
+  bottom: 0;
+  right: 2;
+  text-align: center;
+}
+.notification p {
+  margin: 0;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: #333;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.circle-img {
+  width: 50%;
+  height: 50%;
+  border-color: #000;
+  object-fit: cover; /* Ensures the image covers the entire box */
+}
+.box2 {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+
+  margin: 10px;
+  text-align: left;
+}
+
+.box1 {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
+
+.box3 {
+  display: inline-block;
+  width: 100px;
+  height: 10px;
+
+  margin-top: 10px;
+  position: bottom;
+}

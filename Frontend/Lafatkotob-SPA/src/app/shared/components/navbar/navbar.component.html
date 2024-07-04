@@ -1,0 +1,112 @@
+<nav class="nav" [class.affix]="isAffix && !showModal" [class.hidden]="!show">
+  <div class="container">
+    <div class="logo" appTooltip="Home">
+      <a routerLink="/home">
+        <img src="assets/images/four.svg" alt="Your Logo" class="navbar-logo" />
+      </a>
+    </div>
+
+    <div
+      *ngIf="showMenu"
+      id="mainListDiv"
+      class="main_list"
+      [class.show_list]="navExpanded"
+    >
+      <ul class="navlinks">
+        <li
+          *ngIf="isLoggedIn && isAdmin"
+          class="icon-container adminpage-dropdown-trigger"
+        >
+          <a [routerLink]="['/adminpage']">
+            <i class="fas fa-user-tie" appTooltip="Admin Page"></i>
+          </a>
+        </li>
+
+        <li *ngIf="isLoggedIn" class="icon-container chat-dropdown-trigger">
+          <a [routerLink]="['/conversations']">
+            <i class="fas fa-comments" appTooltip="Chat"></i>
+            <!-- Unread message count indicator -->
+            <span *ngIf="chatUnreadCount > 0" class="unread-messages-count">
+              {{ chatUnreadCount }}
+            </span>
+          </a>
+        </li>
+
+        <!-- Notifications Icon Placeholder -->
+        <!-- Notifications Dropdown -->
+        <li
+          *ngIf="isLoggedIn"
+          class="icon-container notifications-dropdown-trigger"
+        >
+          <a (click)="toggleNotificationsDropdown($event)">
+            <i class="fas fa-bell" appTooltip="Notifications"></i>
+            <span
+              *ngIf="NotificationUnreadCount > 0"
+              class="unread-messages-count"
+            >
+              {{ NotificationUnreadCount }}
+            </span>
+          </a>
+          <!-- Notifications Dropdown Content -->
+          <div
+            *ngIf="showNotificationsDropdown"
+            class="notifications-dropdown-content"
+          >
+            <ng-container>
+              <!-- Message when there are no notifications -->
+              <p *ngIf="NotificationUnreadCount === 0" class="no-notifications">
+                There are no new notifications.
+              </p>
+              <p class="seeAllCs">
+                <a
+                  [routerLink]="['/user', User!.name, 'Notifications']"
+                  class="seeAll"
+                  >See All</a
+                >
+              </p>
+              <app-notification
+                *ngFor="let notification of notifications"
+                [Notification]="notification"
+              ></app-notification>
+            </ng-container>
+          </div>
+        </li>
+
+       <!-- Profile Dropdown -->
+<li *ngIf="isLoggedIn; else showLoginButton" class="user-info-container">
+  <div class="profile-dropdown" (click)="toggleDropdown()">
+    <div class="profile-icon-container" appTooltip="Account">
+      <ng-container *ngIf="profilePictureUrl; else defaultProfileIcon">
+        <img [src]="profilePictureUrl" alt="Profile" class="profile-picture" />
+      </ng-container>
+      <ng-template #defaultProfileIcon>
+        <img src="assets/default-profile.jpg" alt="Default Profile" class="profile-picture" />
+      </ng-template>
+    </div>
+    <div *ngIf="showDropdown" class="dropdown-content">
+      <a [routerLink]="['/user', User?.name]">
+        <img [src]="profilePictureUrl" alt="Profile" class="dropdown-profile-picture" />
+        {{ User?.name }}
+      </a>
+      <a [routerLink]="['/user', User!.name, 'user-settings']">Settings</a>
+      <a [routerLink]="'/contact-us'">Contact Us</a>
+      <button class="logout-button" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</li>
+</ul>
+
+
+      <!-- Login Button Template -->
+      <ng-template #showLoginButton>
+        <li class="icon-container login-button">
+          <a [routerLink]="['/login']">
+            <i class="fas fa-sign-in-alt" appTooltip="Login"></i> Login
+          </a>
+        </li>
+      </ng-template>
+    </div>
+
+    <span *ngIf="showMenu" class="navTrigger" (click)="toggleNavbar()"> </span>
+  </div>
+</nav>

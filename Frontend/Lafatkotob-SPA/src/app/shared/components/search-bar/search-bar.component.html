@@ -1,0 +1,14 @@
+<div class="search-container">
+  <form class="search-form" (submit)="onSearch($event)">
+    <input
+      type="text"
+      [formControl]="searchControl"
+      id="search-bar"
+      placeholder="What can I help you with today?"
+      (keyup.enter)="onSearch($event)"
+    />
+    <button type="submit" class="search-icon-btn">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+</div>

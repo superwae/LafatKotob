@@ -1,0 +1,65 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root {
+  --primary-color: #beadfa;
+  --primary-color-light: #e8e8e8;
+  --primary-color-dark: #9c85f0;
+
+  --secondary-color: #a7c6ed;
+  --secondary-color-light: #d2e2f5;
+  --secondary-color-dark: #2a74d2;
+
+  --success-color: #28a745;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0 !important;
+  background-size: cover; /* Ensure background covers the whole page */
+  background-repeat: no-repeat; /* Prevent background from repeating */
+  background-attachment: fixed;
+  background-color: #e8e8e8;
+}
+
+.tooltip {
+  position: fixed;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #c8c8c8;
+  color: black;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 1050;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  line-height: 1;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.hide-scrollbar ::-webkit-scrollbar {
+  display: none;
+  overflow: hidden;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: hidden;
+}

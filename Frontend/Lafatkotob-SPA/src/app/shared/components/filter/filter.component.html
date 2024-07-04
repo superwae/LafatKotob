@@ -1,0 +1,15 @@
+<div class="genre-filter-section">
+  <h2 class="genre-filter-title">Categories</h2>
+  <div class="genre-filter-line"></div>
+  <div class="genre-filter-container">
+    <div class="genre-filter">
+      <button
+        *ngFor="let genre of genres"
+        (click)="selectGenre(genre.id)"
+        [class.active]="isActive(genre.id)"
+      >
+        {{ genre.name }}
+      </button>
+    </div>
+  </div>
+</div>

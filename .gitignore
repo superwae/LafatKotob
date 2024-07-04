@@ -1,0 +1,19 @@
+# ASP.NET Core
+[Ll]og/
+[Ll]ogs/
+[Aa]rtifacts/
+[Bb]in/
+[Oo]bj/
+appsettings.json
+appsettings.*.json
+
+# Angular
+/node_modules/
+/dist/
+/tmp/
+*.log
+
+# IDE and Editor folders
+.vs/
+.vscode/
+.idea/

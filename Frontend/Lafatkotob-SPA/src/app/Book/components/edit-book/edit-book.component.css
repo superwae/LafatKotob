@@ -1,0 +1,185 @@
+/* General container and layout styles */
+.content-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 12vh;
+  overflow: hidden;
+}
+
+.container {
+  width: 60vw;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hide-scrollbar ::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* for Internet Explorer and Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1px;
+}
+
+.left-col,
+.right-col {
+  flex: 1;
+  padding: 10px;
+}
+
+/* Input and label styling */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-weight: bold;
+  display: block;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.genre {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* Genre selection styles */
+.select-genre-message {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.dropdown-add-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+select {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.add-btn,
+.submit-btn {
+  padding: 8px 12px;
+  background-color: #5f6099;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-btn:hover,
+.submit-btn:hover {
+  background-color: #beadfa;
+}
+
+.labels-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.label {
+  font-weight: bold;
+  display: block;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #f00;
+  cursor: pointer;
+}
+
+/* Image upload styles */
+.modal-image-holder {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  height: 40vh;
+  width: 20vw;
+  border: 1px dotted black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.remove-image-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  background: transparent;
+  color: #f00;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Form submission button at the bottom */
+.bottom-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-btn {
+  background-color: #5f6099;
+  color: white;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.submit-btn:hover {
+  background-color: #beadfa;
+}

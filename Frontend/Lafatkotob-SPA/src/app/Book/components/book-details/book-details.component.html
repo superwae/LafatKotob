@@ -1,0 +1,152 @@
+<div class="container">
+  <div class="modal-header">
+    <button class="close-button" (click)="close()">×</button>
+  </div>
+
+  <div class="card-wrapper">
+    <div class="card">
+      <!-- Image Section -->
+      <div class="product-imgs">
+        <div class="img-display">
+          <div class="img-showcase">
+            <img
+              [src]="book.coverImage ? book.coverImage : defaultImageUrl"
+              class="book-card__image"
+              (error)="onImageError($event)"
+              (load)="onImageLoad($event)"
+              alt="Book Cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Section -->
+      <div class="product-content">
+        <h2 class="product-title">{{ book.title }}</h2>
+        <div class="product-detail">
+          <h2 class="product-author">Author: {{ book.author }}</h2>
+          <h3 class="product-poster">
+            Posted by:
+            <a [routerLink]="['/user', book.userName]">{{ book.userName }}</a>
+          </h3>
+          <h3>Description:</h3>
+          <p>{{ book.description }}</p>
+          <ul>
+            <li *ngIf="book?.status">
+              Status: <span>{{ book.status }}</span>
+            </li>
+            <li *ngIf="book?.language">
+              Language: <span>{{ book.language }}</span>
+            </li>
+            <li *ngIf="book?.addedDate">
+              Added Date: <span>{{ book.addedDate | date: "longDate" }}</span>
+            </li>
+            <li *ngIf="book?.isbn">
+              ISBN: <span>{{ book.isbn }}</span>
+            </li>
+            <li *ngIf="book?.pageCount">
+              Page Count: <span>{{ book.pageCount }}</span>
+            </li>
+            <li *ngIf="book?.condition">
+              Condition: <span>{{ book.condition }}</span>
+            </li>
+            <li *ngIf="book?.type">
+              Type: <span>{{ book.type }}</span>
+            </li>
+            <li *ngIf="book?.publicationDate">
+              Publication Date:
+              <span>{{ book.publicationDate | date: "longDate" }}</span>
+            </li>
+          </ul>
+          <!-- <div class="book-card-actions" *ngIf="userId === book.userId">
+            <button
+              *ngIf="book.type === 'sell' && book.userId !== book.partnerUserId"
+              (click)="sellBook(book, $event)"
+              [class.checked]="book.userId === book.partnerUserId"
+              class="book-card-action-button"
+            >
+              <span class="text">Sell</span>
+              <i class="fa fa-check icon"></i>
+            </button>
+
+            <button
+              *ngIf="book.type === 'buy' && book.userId !== book.partnerUserId"
+              (click)="sellBook(book, $event)"
+              [class.checked]="book.userId === book.partnerUserId"
+              class="book-card-action-button"
+            >
+              <span class="text">Buy</span>
+              <i class="fa fa-check icon"></i>
+            </button>
+
+            <button
+              *ngIf="book.userId === book.partnerUserId"
+              (click)="sellBook(book, $event)"
+              class="book-card-action-button sold"
+            >
+              <i class="fa fa-check"></i>
+            </button>
+          </div>
+          <!-- Action Buttons -->
+          <div
+            *ngIf="userId === book.userId && isLoggedIn; else otherUserTemplate"
+          >
+            <button class="book-card-action-button" (click)="editBook($event)">
+              Edit
+            </button>
+            <button
+              class="book-card-action-button"
+              (click)="deleteBook(book.id, $event)"
+            >
+              Delete
+            </button>
+          </div>
+          <ng-template #otherUserTemplate>
+            <div
+              *ngIf="
+                userRole === 'Admin' && isLoggedIn;
+                else regularUserTemplate
+              "
+            >
+              <button
+                class="book-card-action-button"
+                (click)="deleteBook(book.id, $event)"
+              >
+                Delete
+              </button>
+            </div>
+            <ng-template #regularUserTemplate>
+              <!-- Display the like button only if the user is logged in -->
+              <button
+                *ngIf="isLoggedIn"
+                (click)="onLikeBook(book.id, $event)"
+                class="book-card-action-button"
+                [class.liked]="book.isLikedByCurrentUser"
+              >
+                <i class="fa fa-heart"></i>
+              </button>
+
+              <!-- Always display the chat button -->
+              <button
+                *ngIf="isLoggedIn"
+                (click)="onOpenChat(book.userId, $event)"
+                class="book-card-action-button"
+              >
+                <i class="fa fa-comment"></i>
+              </button>
+
+              <!-- Always display the report button -->
+              <button
+                *ngIf="isLoggedIn"
+                class="book-card-action-button"
+                (click)="reportBook(book.id)"
+              >
+                Report
+              </button>
+            </ng-template>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

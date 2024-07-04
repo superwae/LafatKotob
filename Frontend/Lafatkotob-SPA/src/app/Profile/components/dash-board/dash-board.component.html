@@ -1,0 +1,89 @@
+<div class="main-content">
+  <div
+    class="profile-info"
+    [class.high-z-index]="showModal"
+    [class.default-z-index]="!showModal"
+  >
+    <div class="profile-picture-container">
+      <img
+        [src]="profilePictureUrl"
+        alt="Profile Picture"
+        class="profile-picture"
+      />
+      <div class="profile-picture-border">
+        <svg>
+          <circle cx="7.5" cy="7.5" r="7.5" />
+        </svg>
+      </div>
+      <div *ngIf="!OtherProfile" class="edit-icon" (click)="fileInput.click()">
+        <input
+          type="file"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          #fileInput
+          class="hideButton"
+        />
+        <i class="fa fa-edit" style="font-size: 24px"></i>
+      </div>
+    </div>
+    <div class="profile-text">
+      <h1 class="user-name">{{ name }}</h1>
+      <p *ngIf="!isEditingCity" class="user-name" style="font-size: 16px">
+        City:{{ currentUserInfo!.city }}
+        <i
+          *ngIf="!OtherProfile"
+          class="fa fa-edit"
+          (click)="editCity()"
+          style="cursor: pointer"
+        ></i>
+      </p>
+
+      <input
+        type="text"
+        id="edited2"
+        placeholder="Enter New City"
+        *ngIf="isEditingCity"
+        class="transparent-input"
+      />
+      <button *ngIf="isEditingCity" (click)="saveCity()" class="insert-button">
+        Save
+      </button>
+
+      <p *ngIf="!isEditingBio" class="user-name" style="font-size: 16px">
+        Bio:{{ currentUserInfo!.about }}
+        <i
+          class="fa fa-edit"
+          *ngIf="!OtherProfile"
+          (click)="editBio()"
+          style="cursor: pointer"
+        ></i>
+      </p>
+
+      <input
+        type="text"
+        id="edited"
+        placeholder="Enter New Bio"
+        *ngIf="isEditingBio"
+        class="transparent-input"
+      />
+      <button *ngIf="isEditingBio" (click)="saveBio()" class="insert-button">
+        Save
+      </button>
+      <div class="voting-container">
+        <p class="votes-count">Upvotes: {{ currentUserInfo!.upVotes }}</p>
+        <div *ngIf="!isSameUser()">
+          <button (click)="vote(true)" class="vote-button upvote-button">
+            <i class="fas fa-arrow-up"></i> Upvote
+          </button>
+          <button (click)="vote(false)" class="vote-button downvote-button">
+            <i class="fas fa-arrow-down"></i> Downvote
+          </button>
+        </div>
+      </div>
+    </div>
+    <app-badges [badges]="badges" class="badges"></app-badges>
+  </div>
+</div>
+<div class="books">
+  <app-books></app-books>
+</div>

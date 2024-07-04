@@ -1,0 +1,81 @@
+<div class="modal-overlay">
+  <div *ngIf="!finish; else genreSelection" class="modal">
+    <div class="content-center">
+      <div class="container">
+        <div class="modal-header">
+          <h2>Place order</h2>
+          <button class="close-button" (click)="close()">&times;</button>
+        </div>
+        <div class="row top-row">
+          <div class="left-col">
+            <div class="text-section">
+              <p class="select-genre-message">Please select book genres</p>
+            </div>
+            <div class="dropdown-section">
+              <div class="dropdown-add-wrapper">
+                <select
+                  [(ngModel)]="currentSelection"
+                  (ngModelChange)="onOptionSelected($event)"
+                >
+                  <option *ngFor="let option of allOptions" [ngValue]="option">
+                    {{ option.name }}
+                  </option>
+                </select>
+                <button (click)="addLabel()" class="add-btn">Add</button>
+              </div>
+            </div>
+            <div class="labels-wrapper">
+              <div *ngFor="let label of labels; let i = index" class="label">
+                {{ label.name }}
+                <button (click)="removeLabel(i)" class="remove-btn">x</button>
+              </div>
+            </div>
+          </div>
+          <div class="right-col">
+            <div class="modal-image-holder">
+              <div
+                class="image-container"
+                onclick="document.getElementById('file-input').click()"
+              >
+                <img
+                  [src]="selectedImageUrl"
+                  alt="Selected Book Image"
+                  class="image-preview"
+                />
+                <button
+                  *ngIf="selectedImageUrl"
+                  class="remove-image-button"
+                  (click)="removeSelectedImage($event)"
+                >
+                  &times;
+                </button>
+              </div>
+              <input
+                style="display: none"
+                id="file-input"
+                type="file"
+                (change)="onFileSelected($event)"
+                accept="image/*"
+                hidden
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row bottom-row">
+          <button (click)="saveSelections()" class="submit-btn">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #genreSelection>
+    <div class="confirmation-popup">
+      <p>Book added successfully!</p>
+      <button class="addbook" (click)="addAnotherBook()">
+        Add Another Book
+      </button>
+      <button (click)="closePopup()">Close</button>
+    </div>
+  </ng-template>
+</div>
