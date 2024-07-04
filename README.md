@@ -1,10 +1,10 @@
 # LafatKotob
 Lafatkotob (لفة كتب) is an innovative platform designed to revolutionize the way readers share and discover books. By facilitating book exchanges, we aim to foster a community of readers who can enjoy an endless stream of literature without the financial burden or environmental impact of purchasing new books. Our website connects readers, allowing them to trade books, participate in literary events, and receive personalized reading recommendations through advanced AI technology. Team
 
-Fatima Zayed
-Lana Abdulfatah
-Safiya Alqadi
-Wael Salameh
+Fatima Zayed.
+Lana Abdulfatah.
+Safiya Alqadi.
+Wael Salameh.
 
 Features
 
